@@ -184,6 +184,8 @@ def create_review(change):
       log("new review id: %s" % (review_id))
       change["review"] = review_id
       return True
+   except KeyError:
+      log("Failed to lookup '%s' in cfg.users" % author)
    except:
       log("failed to create review for change %s: %s" % (change["id"], sys.exc_info()[0]))
       return False
